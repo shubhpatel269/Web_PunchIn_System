@@ -1,0 +1,109 @@
+.register-card {
+  max-width: 400px;
+  margin: 2rem auto;
+  transform: scale(1.07);
+}
+
+.p-field {
+  margin-bottom: 0.5rem;
+}
+
+.upload-hint {
+  color: #888;
+}
+
+.register-card button {
+  width: 100%;
+}
+
+.required:after {
+  content: " *";
+  color: red;
+}
+
+
+.p-field label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.p-field input {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.p-field input.p-inputtext {
+  transition: border-color 0.2s;
+}
+
+.p-fileupload {
+  width: 100%;
+}
+
+.error-text {
+  color: #e53935;
+  font-size: .8em;
+  display: block;
+}
+
+.location-row {
+  display: flex;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.location-row input {
+  flex: 1 1 0%;
+  font-size: 1rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  box-sizing: border-box;
+  height: auto;
+}
+
+.location-row button {
+  height: auto;
+  display: flex;
+  align-items: center;
+}
+
+.upload-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.uploaded-file-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.remove-image-btn {
+  background: none;
+  border: none;
+  color: #e53935;
+  font-size: 1.2em;
+  cursor: pointer;
+}
+
+.camera-btn-row {
+  display: flex;
+  align-content: space-around;
+  flex-wrap: wrap;
+  gap: 1em;
+  justify-content: center;
+  margin: 5px 0 5px 0;
+}
+
+.image-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 8px;
+  max-width: 100px;
+  max-height: 100px;
+}

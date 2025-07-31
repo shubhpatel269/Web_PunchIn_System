@@ -1,0 +1,229 @@
+<!-- <div class="min-h-screen flex items-center justify-center bg-gray-50">
+    <div class="flex w-full max-w-5xl items-center justify-center">
+      Left card: Login/admin Card
+      <div class="w-full max-w-md bg-white rounded-2xl shadow-xl p-8 md:p-12 mr-0 md:mr-12">
+        <div class="flex items-center mb-6">
+          <img src="https://cdn-icons-png.flaticon.com/512/9187/9187604.png" alt="Logo" class="w-8 h-8 mr-2" />
+          <span class="text-xl font-bold text-blue-700">Web PunchIn System</span>
+        </div>
+        User Login Form
+        @if (!showSignIn && !showAdminLogin) {
+        <form autocomplete="off">
+          <h2 class="text-2xl font-bold mb-2 text-gray-900">Welcome back</h2>
+          <div class="flex gap-2 mb-4">
+            <div class="flex-1">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+              <input type="email"
+                class="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Enter your email" />
+            </div>
+            <div class="flex-1">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+              <input type="password"
+                class="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Enter your password" />
+            </div>
+          </div>
+          <div class="flex items-center mb-4">
+            <div class="flex-1 h-px bg-gray-200"></div>
+            <span class="mx-2 text-gray-400 text-sm">or</span>
+            <div class="flex-1 h-px bg-gray-200"></div>
+          </div>
+          <button type="button"
+            class="w-full flex items-center justify-center border border-gray-300 rounded-lg py-2 mb-3 hover:bg-gray-50 transition">
+            <img src="https://www.svgrepo.com/show/475656/google-color.svg" alt="Google" class="w-5 h-5 mr-2" />
+            <span class="font-medium text-gray-700">Sign in with Google</span>
+          </button>
+          <div class="flex items-center mb-4">
+            <input type="checkbox" id="remember" class="mr-2" />
+            <label for="remember" class="text-sm text-gray-700">Remember me</label>
+            <div class="flex-1"></div>
+            <a class="text-blue-600 hover:underline text-sm cursor-pointer">Forgot password?</a>
+          </div>
+          <button type="button" (click)="login()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg shadow transition">Sign
+            in to your account</button>
+          <div class="flex justify-between mt-4">
+            <a (click)="switchToSignIn()" class="text-blue-600 hover:underline cursor-pointer text-sm">Sign up</a>
+            <a (click)="switchToAdminLogin()" class="text-blue-600 hover:underline cursor-pointer text-sm">Admin Login</a>
+          </div>
+        </form>
+        }
+        User Sign Up Form
+        @if (showSignIn) {
+        <form autocomplete="off">
+          <h2 class="text-2xl font-bold mb-2 text-gray-900">Sign Up</h2>
+          <div class="flex gap-2 mb-4">
+            <div class="flex-1">
+              <label class="block text-sm font-medium text-gray-700 mb-1">First name</label>
+              <input type="text"
+                class="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Enter first name" />
+            </div>
+            <div class="flex-1">
+              <label class="block text-sm font-medium text-gray-700 mb-1">Last name</label>
+              <input type="text"
+                class="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                placeholder="Enter last name" />
+            </div>
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+            <input type="email"
+              class="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Enter your email" />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <input type="password"
+              class="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Enter your password" />
+          </div>
+          <div class="flex items-center mb-4">
+            <input type="checkbox" id="terms" class="mr-2" />
+            <label for="terms" class="text-sm text-gray-700">I have read the <a
+                class="text-blue-600 hover:underline cursor-pointer">Terms & Conditions</a></label>
+          </div>
+          <button type="button" (click)="signin()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg shadow transition mb-2">Create
+            Account</button>
+          <div class="text-center text-sm mt-2">
+            <a (click)="switchToLogin()" class="text-blue-600 hover:underline cursor-pointer">Back to Login</a>
+          </div>
+        </form>
+        }
+        Admin Login Form (hidden by default)
+        @if (showAdminLogin) {
+        <form autocomplete="off">
+          <h2 class="text-2xl font-bold mb-2 text-gray-900">Admin Login</h2>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Admin Email</label>
+            <input type="email"
+              class="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Enter admin email" />
+          </div>
+          <div class="mb-4">
+            <label class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+            <input type="password"
+              class="block w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+              placeholder="Enter password" />
+          </div>
+          <button type="button" (click)="adminLogin()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg shadow transition">Login as Admin</button>
+          <div class="text-center text-sm mt-2">
+            <a (click)="switchToLogin()" class="text-blue-600 hover:underline cursor-pointer">Back to User Login</a>
+          </div>
+        </form>
+        }
+  
+      </div>
+      Illustration Image
+      <div class="hidden md:flex flex-1 items-center justify-center">
+        <img src="/assets/images/illustration.svg" alt="Illustration" class="w-96 max-w-full" />
+      </div>
+    </div>
+  </div> -->
+
+<div class="min-h-screen flex items-center justify-center bg-gray-50">
+  <div class="flex w-full max-w-5xl items-center justify-center gap-8">
+    <p-toast></p-toast>
+
+    <!-- LEFT CARD: Login/Welcome -->
+    <div class="bg-white rounded-3xl shadow-xl p-8 md:p-12 max-w-md w-full flex flex-col items-stretch">
+      <!-- Tabs with separator -->
+      <!-- <div class="flex border-b border-gray-200 mb-8">
+        <button (click)="switchToAdminTab()"
+          [ngClass]="['flex-1 text-center py-4 text-lg font-semibold rounded-tl-3xl border-none outline-none cursor-pointer transition', activeTab === 'admin' ? 'text-blue-600 font-bold border-b-4 border-blue-600 bg-white' : 'text-gray-400 font-medium border-b-4 border-transparent bg-white']">
+          Admin
+        </button>
+        <div class="w-px bg-gray-200 h-8 self-center"></div>
+        <button (click)="switchToUserTab()"
+          [ngClass]="['flex-1 text-center py-4 text-lg font-semibold rounded-tr-3xl border-none outline-none cursor-pointer transition', activeTab === 'user' ? 'text-blue-600 font-bold border-b-4 border-blue-600 bg-white' : 'text-gray-400 font-medium border-b-4 border-transparent bg-white']">
+          User
+        </button>
+      </div> -->
+      <div class="flex border-b border-gray-200 mb-8">
+        <button (click)="switchToAdminTab()" [disabled]="isFaceDetected" [ngClass]="['flex-1 text-center py-4 text-lg font-semibold rounded-tl-3xl border-none outline-none transition', 
+    activeTab === 'admin' ? 'text-blue-600 font-bold border-b-4 border-blue-600 bg-white' : 'text-gray-400 font-medium border-b-4 border-transparent bg-white',
+    isFaceDetected ? 'cursor-not-allowed opacity-50' : 'cursor-pointer']">
+          Admin
+        </button>
+        <div class="w-px bg-gray-200 h-8 self-center"></div>
+        <button (click)="switchToUserTab()"
+          [ngClass]="['flex-1 text-center py-4 text-lg font-semibold rounded-tr-3xl border-none outline-none cursor-pointer transition', 
+    activeTab === 'user' ? 'text-blue-600 font-bold border-b-4 border-blue-600 bg-white' : 'text-gray-400 font-medium border-b-4 border-transparent bg-white']">
+          User
+        </button>
+      </div>
+      <!-- Admin Login Form -->
+      <ng-container *ngIf="activeTab === 'admin'">
+        <form autocomplete="off" class="flex flex-col">
+          <div class="text-2xl font-bold text-slate-900 mb-6">Admin Login</div>
+          <label class="block text-base font-medium text-slate-700 mb-1">Admin Email</label>
+          <input type="email"
+            class="block w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50"
+            placeholder="Enter admin email" />
+          <label class="block text-base font-medium text-slate-700 mb-1">Password</label>
+          <input type="password"
+            class="block w-full border border-gray-300 rounded-lg px-4 py-2 mb-4 focus:outline-none focus:ring-2 focus:ring-blue-400 bg-gray-50"
+            placeholder="Enter password" />
+          <button type="button" (click)="adminLogin()"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg shadow transition mt-2">Login
+            as Admin</button>
+        </form>
+      </ng-container>
+      <!-- User Welcome Message -->
+      <ng-container *ngIf="activeTab === 'user'">
+        <div>
+          <h1 class="text-2xl font-bold mb-4 text-slate-900">Welcome to Employee Punch System</h1>
+          <p class="text-gray-700 mb-6">
+            To record your work hours, please use the camera on the right. You will be guided through a quick face
+            verification process.
+          </p>
+        </div>
+      </ng-container>
+    </div>
+    <!-- RIGHT CARD: Illustration or Camera -->
+    <div class="flex-1 flex items-center justify-center">
+      <ng-container *ngIf="activeTab === 'admin'">
+        <img src="/assets/images/illustration.svg" alt="Illustration" class="w-96 max-w-full" />
+      </ng-container>
+      <ng-container *ngIf="activeTab === 'user'">
+        <!-- Camera Card (Face Recognition) -->
+        <div class="bg-white rounded-3xl shadow-xl p-8 max-w-md w-full flex flex-col gap-4">
+          <!-- Status Row -->
+          <div class="flex justify-center mb-2">
+            <div *ngIf="isFaceDetected"
+              class="px-6 py-2 rounded-full bg-blue-100 text-blue-800 font-semibold shadow text-center">Face Detected
+            </div>
+            <div *ngIf="!isFaceDetected"
+              class="px-6 py-2 rounded-full bg-gray-100 text-gray-800 font-semibold shadow text-center">Look at Camera!
+            </div>
+          </div>
+          <!-- Camera Area -->
+          <div class="bg-white rounded-xl shadow w-full max-w-md h-72 flex items-center justify-center mx-auto">
+            @if (punchData.length === 0) {
+            <video #video autoplay muted playsinline></video>
+            <canvas #canvas hidden></canvas>
+            }
+            @else {
+            <img [src]="punchData[punchData.length - 1].image" alt="Image" class="captured-img" />
+            }
+          </div>
+          <!-- Error Row -->
+          <div class="text-center min-h-6">
+            <div *ngIf="!camera_permission" class="text-red-500 text-sm">It looks like your browser is blocking access
+              to webcam identifiers. Please grant access to your camera.</div>
+            <div *ngIf="!location_permission" class="text-red-500 text-sm">It looks like your browser is blocking access
+              to location identifiers. Please grant access to your location.</div>
+          </div>
+          <div *ngIf="navigatingToHome" class="text-center mt-4">
+            <p class="text-green-600 font-semibold text-lg">
+              Login successful! Navigating to home page in {{ navigationCountdown }} seconds...
+            </p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,158 @@
+/* You can add global styles to this file, and also import other style files */
+@import "tailwindcss";
+
+
+*{
+  font-family: 'Montserrat', Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+body, .punchin-outer {
+  background: #ffffff;
+}
+
+.p-button {
+  background-color: #0ea5e9 !important; 
+  border-color: #0ea5e9 !important;
+  color: #ffffff !important;
+  transition: background-color 0.2s ease, border-color 0.2s ease !important;
+}
+
+.p-button:hover {
+  background-color: #0284c7 !important; 
+  border-color: #0284c7 !important;
+}
+
+.p-button:focus {
+  background-color: #0284c7 !important; 
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 0 2px rgba(2, 132, 199, 0.2) !important; 
+}
+
+.p-button.p-button-secondary {
+  background-color: #0ea5e9 !important; 
+  border-color: #0ea5e9 !important;
+  color: #ffffff !important;
+}
+
+.p-button.p-button-secondary:hover {
+  background-color: #0284c7 !important; 
+  border-color: #0284c7 !important;
+}
+
+.p-button.p-button-text {
+  background-color: transparent !important;
+  border-color: transparent !important;
+  color: #0ea5e9 !important; 
+}
+
+.p-button.p-button-text:hover {
+  background-color: rgba(14, 165, 233, 0.1) !important;
+  color: #0284c7 !important; 
+}
+
+.p-button.p-button-danger {
+  background-color: #0ea5e9 !important; 
+  border-color: #0ea5e9 !important;
+  color: #ffffff !important;
+}
+
+.p-button.p-button-danger:hover {
+  background-color: #0284c7 !important; 
+  border-color: #0284c7 !important;
+}
+
+.start-btn.p-button,
+.register-btn.p-button {
+  background-color: #0ea5e9 !important; 
+  border-color: #0ea5e9 !important;
+  color: #ffffff !important;
+}
+
+.start-btn.p-button:hover,
+.register-btn.p-button:hover {
+  background-color: #0284c7 !important; 
+  border-color: #0284c7 !important;
+}
+
+.right-model {
+  margin-left: auto;
+  height: 100vh !important;
+  max-height: unset !important;
+  border-radius: 0;
+ 
+  .p-dialog-content {
+    padding: 0 !important;
+  }
+}
+
+button.root.primary.background{
+    color  : cyan;
+
+}
+
+.d-modal {
+  height: auto;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+ 
+  &.modal-center {
+    height: auto;
+    max-height: 100vh;
+  }
+ 
+  &.two-col {
+    flex-direction: row;
+ 
+    .left {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+ 
+    .right {
+      display: flex;
+      flex-direction: column;
+      max-width: 420px;
+      width: 100%;
+ 
+      &.col-sm {
+        background: #f4f8f9;
+      }
+    }
+  }
+ 
+  .d-head {
+    padding: 1rem 1.5rem;
+    display: flex;
+    font-size: large;
+    align-items: center;
+    border-bottom: 1px solid #e7e7e7;
+  }
+ 
+  .d-body {
+    overflow: auto;
+    flex: 1;
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+ 
+  .p-tabview-nav-container {
+    padding: 0 1.5rem;
+  }
+ 
+  .d-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0.5rem 1rem 1rem 1rem; 
+
+ 
+    .footer.flex {
+      position: sticky;
+      /* padding: 1rem 1.5rem; */
+      flex: 1;
+    }
+  }
+}

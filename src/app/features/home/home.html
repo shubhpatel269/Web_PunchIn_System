@@ -1,0 +1,75 @@
+<div class="main-container">
+
+
+  <div class="bg-white p-6 rounded-2xl shadow-md max-w-[500px] w-full text-center animate-fade-in"
+    style="background-color: #F0F9FF;">
+    <div class="flex flex-col items-center gap-4">
+      <img src="/assets/images/success.gif" alt="Success" style="width: 96px; height: 96px; margin-bottom: 1rem;" />
+      <h2 class="text-xl font-semibold text-[#2e9aa7]">
+        Punch In Successful 🎉</h2>
+      <p class="text-sm text-gray-600">
+        Here’s a quick summary of your punch in:
+      </p>
+    </div>
+
+    <div class="mt-6 text-left space-y-4">
+      <div class="bg-[#E0F2FE] p-5 rounded-xl border border-[#b6e0e3] shadow-sm">
+        <div class="mb-3">
+          <h3 class="text-xs font-semibold text-gray-500 uppercase">
+            Name
+          </h3>
+          <p class="text-base font-semibold text-[#2e9aa7]">
+            {{userData.name}} </p>
+        </div>
+
+        <div class="mb-3">
+          <h3 class="text-xs font-semibold text-gray-500 uppercase">
+            Employee ID
+          </h3>
+          <p class="text-base font-medium text-gray-700">
+            {{userData.employeeId}} </p>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-3">
+          <div>
+            <h3 class="text-xs font-semibold text-gray-500 uppercase">
+              Date
+            </h3>
+            <p class="text-base font-medium text-gray-700">
+              {{userData.punchedTime}} </p>
+          </div>
+          <div>
+            <h3 class="text-xs font-semibold text-gray-500 uppercase">
+              Location
+            </h3>
+            <p class="text-base font-medium text-gray-700">
+              {{userData.location}} </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-4 mb-3">
+          <div>
+            <h3 class="text-xs font-semibold text-gray-500 uppercase">
+              Email
+            </h3>
+            <p class="text-base font-medium text-gray-700">
+              {{userData.email}} </p>
+          </div>
+          <div>
+            <h3 class="text-xs font-semibold text-gray-500 uppercase">
+              Mobile
+            </h3>
+            <p class="text-base font-medium text-gray-700">
+              {{userData.mobile}} </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <p-toast />
+        <p-confirmpopup></p-confirmpopup>
+        <button class="return-btn" (click)="confirmBackToLogin($event)">Return Home</button>
+      </div>
+    </div>
+  </div>
+</div>

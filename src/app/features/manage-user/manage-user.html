@@ -1,0 +1,100 @@
+<div class="d-modal">
+    <div class="d-head">
+        <h2 class="table-heading"><strong>User Information</strong> </h2>
+    </div>
+    <p-toast />
+    <div class="d-body">
+        <form [formGroup]="registerForm" (ngSubmit)="register()">
+            <div class="p-field">
+                <label for="employeeId" class="required">Employee ID</label>
+                <input pInputText id="employeeId" formControlName="employeeId" placeholder="Employee ID" />
+                @if (registerForm.get('employeeId')?.touched && registerForm.get('employeeId')?.hasError('required')) {
+                <span class="error-text">Employee ID is required.</span>
+                }
+            </div>
+            <div class="p-field">
+                <label for="name" class="required">Name</label>
+                <input pInputText id="name" formControlName="name" placeholder="name" />
+                @if (registerForm.get('name')?.touched && registerForm.get('name')?.hasError('required')) {
+                <span class="error-text">Name is required.</span>
+                }
+            </div>
+            <div class="p-field">
+                <label for="email" class="required">Email</label>
+                <input pInputText id="email" formControlName="email" type="email" placeholder="email" />
+                @if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('required')) {
+                <span class="error-text">Email is required.</span>
+                }
+                @if (registerForm.get('email')?.touched && registerForm.get('email')?.hasError('email')) {
+                <span class="error-text">Please enter a valid email address.</span>
+                }
+            </div>
+            <div class="p-field">
+                <label for="phone" class="required">Phone Number</label>
+                <input pInputText id="phone" formControlName="phone" type="tel" placeholder="Phone number" />
+                @if (registerForm.get('phone')?.touched && registerForm.get('phone')?.hasError('required')) {
+                <span class="error-text">Phone number is required.</span>
+                }
+                @if (registerForm.get('phone')?.touched && registerForm.get('phone')?.hasError('pattern')) {
+                <span class="error-text">Phone number must be exactly 10 digits.</span>
+                }
+            </div>
+            <div class="p-field">
+                <label for="location" class="required">Location</label>
+                <div class="location-row">
+                    <input pInputText id="location" formControlName="location" placeholder="Enter city" />
+                    <button pButton type="button" label="Get Current Location" (click)="getCurrentLocation()"></button>
+                </div>
+                @if (registerForm.get('location')?.touched && registerForm.get('location')?.hasError('required')) {
+                <span class="error-text">Location is required.</span>
+                }
+            </div>
+            <div class="p-field">
+                <label for="image">Upload Photo <span style="color: red;">*</span><span style="font-size: 0.95em; color: #555; margin-left: 0.5rem;">(Please upload your neat and clean Photo.)</span></label>
+               
+                <div class="upload-row" style="display: flex; align-items: flex-start; gap: 1rem;">
+                    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+                        <p-fileUpload mode="basic"  chooseIcon="pi pi-upload" name="image" accept="image/*" maxFileSize="2000000"
+                            (onSelect)="onImageUpload($event)" chooseLabel="Upload" auto="true"></p-fileUpload>
+                        <button pButton type="button" label="Take Picture" (click)="openCamera()"></button>
+                    </div>
+                    @if (registerForm.get('image')?.value) {
+                    <p-card [style]="{ position: 'relative', width: 'auto' }">
+                        <button type="button" (click)="removeImage()" class="remove-image-btn"
+                            style="position: absolute; top: 4px; right: 4px; z-index: 2; background: rgba(255,255,255,0.8); border: none; border-radius: 50%; width: 24px; height: 24px; font-size: 18px; cursor: pointer;">
+                            &times;
+                        </button>
+                        <p-image [src]="registerForm.get('image')?.value" alt="Preview" [preview]="true"
+                            style="width: 100%; height: 100px; object-fit: cover; border-radius: 4px;" />
+                    </p-card>
+                    }
+                </div>
+                <p-dialog header="Take a Picture" [(visible)]="showCameraDialog" [modal]="true" [closable]="true"
+                    [style]="{width: '350px'}" (onHide)="closeCamera()">
+                    @if (showCameraDialog) {
+                    <div style="display: flex; flex-direction: column; align-content: space-around; flex-wrap: wrap;">
+                        <video #video width="300" height="225" autoplay></video>
+                        <canvas #canvas width="300" height="225" style="display:none"></canvas>
+                        <div class="camera-btn-row">
+                            <button pButton type="button" label="Capture"
+                                (click)="capturePhoto(video, canvas)"></button>
+                            <button pButton type="button" label="Close" class="p-button-secondary"
+                                (click)="closeCamera()"></button>
+                        </div>
+                    </div>
+                    }
+
+                </p-dialog>
+                @if (registerForm.get('image')?.touched && registerForm.get('image')?.hasError('required')) {
+                <span class="error-text">Image is required.</span>
+                }
+            </div>
+
+        </form>
+    </div>
+    <div class="d-footer">
+        <button pButton type="button" label="Close" class="p-button-secondary" (click)="onClose()"
+            style="margin-right: 1rem;"></button>
+        <button pButton type="submit" label="Register" (click)="register()" class="p-mt-2"></button>
+    </div>
+</div>

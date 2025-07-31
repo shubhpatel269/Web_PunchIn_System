@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Punch In System</title>
+    <script src="assets/hacktimer/HackTimer.js"></script>
+
+</head>
+
+<body>
+    <div class="punchin-outer">
+        <div class="punchin-inner">
+            <p-toast></p-toast>
+
+
+            <div class="punchin-header">
+                <div class="header-title">Web Punch-In System</div>
+                <div class="header-user">{{detectedUser}}</div>
+            </div>
+            <div class="punchin-card">
+                <div class="status-row">
+                    @if (isFaceDetected) {
+                    <div class="status-label detected">Face Detected</div>
+                    }
+                    @else {
+                    <div class="status-label waiting">Look at Camera!</div>
+                    }
+                </div>
+                <div class="camera-area">
+                    @if (punchData.length === 0) {
+                    <video #video autoplay muted playsinline></video>
+                    <canvas #canvas hidden></canvas>
+                    }
+                    @else {
+                    <img [src]="punchData[punchData.length - 1].image" alt="Image" class="captured-img" />
+                    }
+                </div>
+                <div class="error-row">
+                    @if (camera_permission === false) {
+                    <div class="error-text">
+                        It looks like your browser is blocking access to webcam identifiers. Please grant access to your
+                        camera.
+                    </div>
+                    }
+                    @else if (location_permission === false) {
+                    <div class="error-text">
+                        It looks like your browser is blocking access to location identifiers. Please grant access to
+                        your
+                        location.
+                    </div>
+                    }
+                </div>
+                <div class="button-row-punchin">
+                    @if (punchData.length > 0) {
+                    <button class="retake-btn" (click)="retakePunchIn()">Retake Punch-In</button>
+                    <button class="retake-btn" (click)="downloadPunchData()">Punch data</button>
+                    <button class="retake-btn" (click)="downloadLocationLogs()">Punch data</button>
+                    <span class="button-spacer"></span>
+                    }
+                    <p-toast />
+                    <p-confirmpopup></p-confirmpopup>
+                    <button class="return-btn" (click)="confirmBackToHome($event)">Return Home</button>
+                </div>
+            </div>
+            <div class="info-panel-punchin">
+                <div style="text-align: justify;">
+                    Please ensure your face is clearly visible and that location access is granted for the punch-in
+                    process.
+                    The system will guide you through completing the process and notify you about session logs and
+                    download
+                    options.
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

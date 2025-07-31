@@ -1,0 +1,72 @@
+<div class="min-h-screen bg-gray-50 flex">
+  <!-- Sidebar -->
+  <aside class="flex flex-col p-3 bg-white border-r border-gray-200 w-14">
+    <div class="space-y-3 flex-1">
+      <div class="flex items-center justify-between">
+        <h2 class="text-xl font-bold text-blue-700 hidden">Menu</h2>
+      </div>
+      <nav class="flex-1">
+        <ul class="pt-2 pb-4 space-y-1 text-sm">
+          <li class="rounded-sm">
+            <a routerLink="/admin/manage-user" routerLinkActive="bg-blue-100"
+              class="flex items-center p-2 space-x-3 rounded-md hover:bg-blue-50 cursor-pointer group relative">
+              <i class="pi pi-users text-blue-600 text-xl"></i>
+              <span class="hidden group-hover:block absolute left-12 bg-gray-800 text-white px-2 py-1 rounded text-sm">Manage User</span>
+            </a>
+          </li>
+          <li class="rounded-sm">
+            <a routerLink="/admin/reports" routerLinkActive="bg-blue-100"
+              class="flex items-center p-2 space-x-3 rounded-md hover:bg-blue-50 cursor-pointer group relative">
+              <i class="pi pi-chart-bar text-blue-600 text-xl"></i>
+              <span class="hidden group-hover:block absolute left-12 bg-gray-800 text-white px-2 py-1 rounded text-sm">Reports</span>
+            </a>
+          </li>
+          <li class="rounded-sm">
+            <a routerLink="/admin/profile" routerLinkActive="bg-blue-100"
+              class="flex items-center p-2 space-x-3 rounded-md hover:bg-blue-50 cursor-pointer group relative">
+              <i class="pi pi-user text-blue-600 text-xl"></i>
+              <span class="hidden group-hover:block absolute left-12 bg-gray-800 text-white px-2 py-1 rounded text-sm">Profile</span>
+            </a>
+          </li>
+          <li class="rounded-sm">
+            <button (click)="openLogoutModal()"
+              class="flex items-center w-full p-2 space-x-3 rounded-md hover:bg-blue-50 cursor-pointer bg-transparent border-0 outline-none group relative">
+              <i class="pi pi-sign-out text-blue-600 text-xl"></i>
+              <span class="hidden group-hover:block absolute left-12 bg-gray-800 text-white px-2 py-1 rounded text-sm">Logout</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </aside>
+  <!-- Main Content -->
+  <div class="flex-1 h-screen overflow-y-auto">
+    <router-outlet></router-outlet>
+  </div>
+  <!-- logout confirmation -->
+  @if (showLogoutModal) {
+    <div  class="fixed inset-0  bg-opacity-90 backdrop-blur-[0.5px] overflow-y-auto h-full w-full flex items-center justify-center z-50">
+    <div class="relative bg-white rounded-lg shadow-xl max-w-md w-full mx-4 animate-modal-entry">
+      <div class="p-6">
+        <div class="text-center">
+          <div class="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+            <i class="pi pi-sign-out text-red-600 text-xl"></i>
+          </div>
+          <h3 class="text-xl font-bold text-gray-900 mb-2">Confirm Logout</h3>
+          <p class="text-gray-500 text-lg mb-6">Are you sure you want to logout?</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 justify-center">
+          <button (click)="closeLogoutModal()" class="w-full sm:w-auto px-6 py-2.5 text-gray-700 bg-gray-100 hover:bg-gray-200 rounded font-medium transition-colors duration-200 flex items-center justify-center gap-2">
+            <i class="pi pi-times"></i>
+            Cancel
+          </button>
+          <button (click)="confirmLogout()" class="w-full sm:w-auto px-6 py-2.5 text-white bg-red-600 hover:bg-red-700 rounded font-medium transition-colors duration-200 flex items-center justify-center gap-2">
+            <i class="pi pi-sign-out"></i>
+            Logout
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
+</div> 
