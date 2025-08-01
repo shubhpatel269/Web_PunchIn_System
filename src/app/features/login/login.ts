@@ -151,9 +151,9 @@ export class Login implements AfterViewInit, OnDestroy {
   }
 
   async loadModels() {
-    await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
-    await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
-    await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
+    await faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models/face-api/');
+    await faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models/face-api/');
+    await faceapi.nets.faceRecognitionNet.loadFromUri('/assets/models/face-api/');
   }
 
   async loadEmployeeDescriptors() {
