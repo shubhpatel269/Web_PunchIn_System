@@ -167,9 +167,9 @@ export class ManageUser {
 
   async loadFaceModels() {
     if (!this.faceModelsLoaded) {
-      await faceapi.nets.tinyFaceDetector.loadFromUri('/models');
-      await faceapi.nets.faceLandmark68Net.loadFromUri('/models');
-      await faceapi.nets.faceRecognitionNet.loadFromUri('/models');
+      await faceapi.nets.tinyFaceDetector.loadFromUri('/assets/models/face-api/');
+      await faceapi.nets.faceLandmark68Net.loadFromUri('/assets/models/face-api/);
+      await faceapi.nets.faceRecognitionNet.loadFromUri('/assets/models/face-api/);
       this.faceModelsLoaded = true;
     }
   }
